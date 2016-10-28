@@ -30,12 +30,20 @@ int main(void){
     double yN, yN_new;
     double uN, uN_new;
     double vN, vN_new;
+    
+    double a, b;
+    printf("Enter the coordinate of the target!\n");
+    printf("x-coordinate = ");
+    scanf("%lf", &a);
+    printf("y-coordinate = ");
+    scanf("%lf", &b);
+    
     double m = 1.0;
     double gamma = 0.1;
     double g = 9.8;
     double radius = 1.0;
     double distance;
-    double distance_c = dist(15.0, 20.0);
+    double distance_c = dist(a, b);
     double theta, flag;
     
     double v0;
@@ -44,7 +52,7 @@ int main(void){
     
     for(i = 0; i <= 90; ++i){
         theta = i * pi / (2.0 * 90.0);
-        flag = dist(15.0, 20.0);
+        flag = dist(a, b);
         
         xN = 0.0;
         yN = 0.0;
@@ -52,7 +60,7 @@ int main(void){
         vN = v0 * sin(theta);
     
         for(j = 0; j < N; ++j){
-            distance = dist(xN - 20.0, yN - 15.0);
+            distance = dist(xN - a, yN - b);
         
             if(flag > distance){
                 flag = distance;
@@ -74,7 +82,7 @@ int main(void){
         }
     }
     
-    printf("v0 = %lf,theta = %d * (pi / 2)\n", v0, k);
+    printf("v0 = %lf,theta = %d * (pi / 90)\n", v0, k);
     judgement(distance_c, radius);
     
     return 0;
